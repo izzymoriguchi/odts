@@ -1,3 +1,55 @@
+## Set up
+1. Clone this project
+`git clone https://github.com/izzymoriguchi/odts.git`
+
+2. Under odts directory, first run the following:
+
+ `npm install` : this installs all packages specified in package.json into node_modules folder
+ 
+ `cd backend` 
+ 
+ `npm install` : under backend folder, also need to install packages into their node_modules folder
+
+`npm start` : this starts an app
+
+Note that at this point it opens up the web app but the backend is not setup yet.
+
+3. Set up mongod
+  - If you have used mongod before:
+  
+      `mongod` or `sudo mongod --auth`
+     
+  - If it's your first time working with mongod:
+  
+      `brew install mongodb`
+      
+      `mkdir -p /data/db`
+      
+      `mongod`
+      
+4. Set up your local mongodb
+  - `mongo` : start mongo shell
+  
+  - `use odts`: creates db called odts if doesn't exist
+  
+  - create a user for db by doing: 
+  
+  `db.createUser(
+     {
+       user: "cs218",
+       pwd: "cs218",
+       roles: [ { role: "readWrite", db: "odts" } ]
+     }
+   )`
+  
+  
+ 5. Run: `nodemon server` under backend directory
+
+
+
+---
+
+The following documentation is provided by Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

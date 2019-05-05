@@ -1,3 +1,4 @@
+// SJSU CS 218 Spring 2019 TEAM4
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mongodb:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile-Backend
+    ports:
+      - "4001:4001"
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-Frontend
+    ports:
+      - "3000:3000"
+    command: 'npm start'
+    depends_on:
+      - backend

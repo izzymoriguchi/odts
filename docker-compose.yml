@@ -4,6 +4,10 @@ services:
     image: "mongo"
     ports:
       - "27017:27017"
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME=cs218
+#      - MONGO_INITDB_ROOT_PASSWORD=cs218
+    restart: on-failure
   backend:
     build:
       context: ./backend/

@@ -15,9 +15,6 @@ class App extends Component {
                     <Link to="/" className="navbar-brand">ODTS</Link>
                     <div className="collpase navbar-collapse">
                         <ul className="navbar-nav mr-auto">
-                            {/*<li className="navbar-item">*/}
-                            {/*    <Link to="/" className="nav-link">Todos</Link>*/}
-                            {/*</li>*/}
                             <li className="navbar-item">
                                 <Link to="/add" className="nav-link">Create package</Link>
                             </li>
@@ -26,7 +23,6 @@ class App extends Component {
                 </nav>
                 <br/>
                 <Route path="/" exact component={TrackPackage} />
-                {/*<Route path="/edit/:id" component={EditTodo} />*/}
                 <Route path="/add" component={CreateTracking} />
             </div>
         </Router>

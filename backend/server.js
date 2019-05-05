@@ -12,10 +12,7 @@ let Tracking = require('./tracking.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/odts', {
-    "user": "cs218",
-    "pass": "cs218"
-});
+mongoose.connect('mongodb://mongodb:27017/odts', { useNewUrlParser: true });
 
 const connection = mongoose.connection;
 const googleMapsClient = require('@google/maps').createClient({
@@ -74,7 +71,6 @@ router.route('/:id').get(function(req, res) {
                 });
             }
         });
-
         console.log(tracking);
     });
 });
@@ -85,10 +81,12 @@ router.route('/add').post(function(req, res) {
         destination: req.body.destination_address,
         origin: req.body.origin_address
     };
+    console.log('New Tracking:');
     console.log(newTracking);
     let tracking = new Tracking(newTracking);
     tracking.save()
         .then(tracking => {
+            console.log('Tracking data saved');
             console.log(tracking);
             res.status(200).send(tracking);
         })

@@ -1,3 +1,4 @@
+// SJSU CS 218 Spring 2019 TEAM4
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

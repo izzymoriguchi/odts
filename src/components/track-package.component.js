@@ -1,3 +1,4 @@
+// SJSU CS 218 Spring 2019 TEAM4
 import React, { Component } from 'react';
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react';

@@ -9,6 +9,7 @@ services:
 #      - MONGO_INITDB_ROOT_PASSWORD=cs218
     restart: on-failure
   backend:
+    image: "odtsbackend"
     build:
       context: ./backend/
       dockerfile: Dockerfile-Backend
@@ -19,6 +20,7 @@ services:
     depends_on:
       - mongodb
   frontend:
+    image: "odtsfrontend"
     build:
       context: .
       dockerfile: Dockerfile-Frontend

@@ -12,8 +12,6 @@ services:
       dockerfile: Dockerfile-Backend
     ports:
       - "4001:4001"
-    volumes:
-      - ./backend:/usr/src/app
     depends_on:
       - mongodb
   frontend:

@@ -6,7 +6,7 @@ services:
       - "27017:27017"
     restart: on-failure
   backend:
-    image: "izzymoriguchi/odtsbackend"
+#    image: "izzymoriguchi/odtsbackend"
     build:
       context: ./backend/
       dockerfile: Dockerfile-Backend
@@ -17,7 +17,7 @@ services:
     depends_on:
       - mongodb
   frontend:
-    image: "izzymoriguchi/odtsfrontend"
+#    image: "izzymoriguchi/odtsfrontend"
     build:
       context: .
       dockerfile: Dockerfile-Frontend

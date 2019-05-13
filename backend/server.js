@@ -12,7 +12,11 @@ let Tracking = require('./tracking.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://mongodb:27017/odts', { useNewUrlParser: true });
+let dbURL = 'mongodb://mongodb:27017/odts';
+if (process.env.NODE_ENV === 'production') {
+    dbURL = 'mongodb://localhost:27017/odts';
+}
+mongoose.connect(dbURL, { useNewUrlParser: true });
 
 const connection = mongoose.connection;
 const googleMapsClient = require('@google/maps').createClient({

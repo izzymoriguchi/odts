@@ -49,12 +49,21 @@ export default class TrackPackage extends Component {
             });
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextState.counter === 1) {
+            return false; // does not re-render
+        }
+        return true;
+    }
+
     render() {
         if (this.state.current_location.length > 0) {
             var center = {
                 lat: this.state.current_location[0],
                 lng: this.state.current_location[1]
             };
+            this.setState({counter: 1});
+            this.setState({current_location: []});
             return (
                 // Important! Always set the container height explicitly
                 <div style={{ height: '100vh', width: '100%' }}>
@@ -72,8 +81,10 @@ export default class TrackPackage extends Component {
                     </GoogleMapReact>
                 </div>
             );
-            this.setState({current_location: []});
         } else {
+            if (this.state.counter === 1) {
+                this.setState({counter: 2});
+            }
             return (
                 <div style={{marginTop: 10}}>
                     <h3>Track package</h3>

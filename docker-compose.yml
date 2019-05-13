@@ -4,9 +4,10 @@ services:
     image: "mongo"
     ports:
       - "27017:27017"
-    restart: on-failure
+    volumes:
+      - mongodata:/data/db
   backend:
-#    image: "izzymoriguchi/odtsbackend"
+    image: ${DOCKER_REGISTRY}/odts-backend-repo
     build:
       context: ./backend/
       dockerfile: Dockerfile-Backend
@@ -15,7 +16,7 @@ services:
     depends_on:
       - mongodb
   frontend:
-#    image: "izzymoriguchi/odtsfrontend"
+    image: ${DOCKER_REGISTRY}/odts-frontend-repo
     build:
       context: .
       dockerfile: Dockerfile-Frontend
@@ -24,3 +25,5 @@ services:
     command: 'npm start'
     depends_on:
       - backend
+volumes:
+  mongodata:

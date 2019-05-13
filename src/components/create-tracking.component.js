@@ -30,6 +30,7 @@ export default class CreateTracking extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        console.log('Create button clicked!');
 
         const newTracking = {
             destination_address: this.state.destination_address,
@@ -41,6 +42,10 @@ export default class CreateTracking extends Component {
                 console.log(res.data.origin);
                 console.log(res.data.destination);
                 this.setState({tracking_num: res.data._id})
+            })
+            .catch(err => {
+                console.log('Create request failed!');
+                throw err;
             });
 
         this.setState({
@@ -50,7 +55,7 @@ export default class CreateTracking extends Component {
     }
 
     render() {
-        if (this.state.tracking_num != '') {
+        if (this.state.tracking_num !== '') {
             return (
                 <div style={{marginTop: 10}}>
                     <h3>Your tracking number: {this.state.tracking_num}</h3>
